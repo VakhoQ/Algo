@@ -8,7 +8,10 @@ public class Flip {
      */
     public static void main(String[] args) {
 
-        int [] arr =new int[]{1, 0, 0, 1, 0, 0, 1};
+       // int [] arr =new int[]{1, 0, 0, 1, 0, 0, 1};
+        int [] arr =new int[]{1, 0, 1, 0, 1, 0, 0, 1, 1};
+
+        //
         maxOnes(arr,arr.length);
     }
 
@@ -18,9 +21,11 @@ public class Flip {
         int maxDiff =0;
 
         int l=0; int r=0;
-        int ones=0;
+
+        int originalOnes=0;
 
         for(int i=0; i<n; i++){
+            if(a[i] == 1)  originalOnes++;
 
             int count1 = 0, count0 = 0;
             for(int j=i; j<n; j++){
@@ -36,19 +41,8 @@ public class Flip {
 
         }
 
-        for(int i=0; i<l; i++) {
-            if(a[i]==1){
-                ones++;
-            }
-        }
 
-        for(int i=l; i<n; i++) {
-            if(a[i]==1){
-                ones++;
-            }
-        }
-
-        return ones+maxDiff;
+        return originalOnes+maxDiff;
     }
 
 }
