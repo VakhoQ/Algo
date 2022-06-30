@@ -3,12 +3,36 @@ package algo.leetcode;
 public class BuyStocks121 {
 
     /**
-     * O(N)
-     * https://leetcode.com/problems/best-time-to-buy-and-sell-stock
+     * Time complexity is O(n)
      * @param prices
      * @return
      */
     public int maxProfit(int[] prices) {
+
+        int largestDifference=0;
+        int minSoFar = Integer.MAX_VALUE;
+
+        for(int i=0; i<prices.length; i++){
+            if (prices[i]< minSoFar){
+                minSoFar=prices[i];
+            }{
+                // if price[i] is not the minimum so far ==> let's see what' largest difference
+                int profit = -1*(minSoFar)+prices[i];
+                largestDifference=Math.max(largestDifference, profit );
+            }
+
+        }
+        return largestDifference;
+    }
+
+
+    /**
+     * O(n^2)
+     * https://leetcode.com/problems/best-time-to-buy-and-sell-stock
+     * @param prices
+     * @return
+     */
+    public int maxProfitN2(int[] prices) {
 
         int maxProfit=0;
         for(int i=0; i<prices.length; i++){
@@ -27,4 +51,6 @@ public class BuyStocks121 {
 
         return maxProfit;
     }
+
+
 }
