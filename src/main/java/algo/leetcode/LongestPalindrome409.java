@@ -1,7 +1,9 @@
 package algo.leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class LongestPalindrome409 {
 
@@ -9,6 +11,29 @@ public class LongestPalindrome409 {
     public static void main(String[] args) {
 
     }
+
+    class Solution2 {
+        public int longestPalindrome(String s) {
+
+            int matched=0;
+            Set<Character> unmached = new HashSet<Character>();
+            for (char c: s.toCharArray()) {
+                if(!unmached.contains(c)){
+                    unmached.add(c);
+                }else{
+                    matched++;
+                    unmached.remove(c);
+                }
+            }
+            int longestPalindromeLength = matched * 2;
+            if(unmached.size() > 0){
+                longestPalindromeLength++;
+            }
+            return longestPalindromeLength;
+        }
+    }
+
+
     class Solution {
         public int longestPalindrome(String s) {
 
